@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Tracker</title>
+</head>
+<body>
+<h2>Job Application Tracker</h2>
+
+<form action="/add" method="post">
+    <input name="company" placeholder="Company" required>
+    <input name="role" placeholder="Role" required>
+    <select name="status">
+        <option>Applied</option>
+        <option>Interview</option>
+        <option>Rejected</option>
+        <option>Offer</option>
+    </select>
+    <button>Add</button>
+</form>
+
+<ul>
+{% for job in jobs %}
+    <li>
+        {{ job.company }} - {{ job.role }} ({{ job.status }})
+        <a href="/delete/{{ job.id }}">❌</a>
+    </li>
+{% endfor %}
+</ul>
+</body>
+</html>
